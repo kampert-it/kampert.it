@@ -1,13 +1,178 @@
-/* Reset a few defaults */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+:root {
+    --bg-main: #0A0A1B;
+    --bg-gradient: radial-gradient(circle at top, #161632, #0A0A1B);
+    --bg-intro: #1B1B3D;
+    --intro-quote: #A4A4A4;
+    --icon-color: #6C63FF;
+    --profile-border: #6C63FF;
+    --button-text: #FFF;
+    --button-background: linear-gradient(120deg, #6C63FF 0%, #9F7AEA 20%, #6C63FF 40%, #9F7AEA 60%, #6C63FF 100%);
+    --button-shadow: #6C63FF;
+    --footer-main: #1b1b3d;
+    --text-color: #FAFAFA;
 }
 
-/* Body – overall page style */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #E0E0E0;
-	padding: 2rem;
+    margin: 0;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    flex: 1;
+}
+
+#intro {
+    background: var(--bg-intro);
+    border-radius: 1rem;
+    display: flex;
+}
+
+#profileWrapper {
+    padding: 2rem;
+}
+
+#profileImage {
+    border-radius: 50%;
+    width: 20rem;
+    height: 20rem;
+    border: 0.2rem solid var(--profile-border);
+}
+
+#introText {
+    padding: 1rem;
+}
+
+#introText h1 {
+    font-size: 2.5rem;
+    line-height: 0;
+    padding-top: 1em;
+}
+
+#introText blockquote {
+    margin: 0;
+    font-style: italic;
+    color: var(--intro-quote);
+}
+
+#buttons {
+    padding-top: 4rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.indexButton {
+    padding: 1.4rem 0;
+    width: 15rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    color: var(--button-text);
+    background: var(--button-background);
+    text-align: center;
+    text-decoration: none;
+    background-size: 300% 300%;
+    animation: shimmer 30s linear infinite;
+    box-shadow: 0 0 1rem var(--button-shadow);
+    filter: brightness(0.9);
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.indexButton:hover {
+    box-shadow: 0 0 1.6rem var(--button-shadow);
+    filter: brightness(1);
+}
+
+#icons {
+    padding: 8rem 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#icons img {
+    width: 6rem;
+    height: 6rem;
+    filter: opacity(0.8);
+    transition: all 0.2s ease, filter 0.2s ease;
+}
+
+#icons img:hover {
+    scale: 115%;
+    filter: opacity(1);
+}
+
+footer {
+    background: var(--footer-main);
+    padding: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#blinking {
+    animation: blink 1.06s infinite;
+}
+
+@media (max-width:829px) {
+    #intro {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #profileImage {
+        max-width: 80vw;
+        max-height: 80vw;
+    }
+
+    #buttons {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .indexButton {
+        width: 100%;
+    }
+
+    #icons img {
+        max-width: 20vw;
+        max-height: 20vw;
+    }
 }
