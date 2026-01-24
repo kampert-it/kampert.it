@@ -7,7 +7,7 @@ async function retrieveRepos() {
     try {
         const response = await fetch(getUrl);
         if (!response.ok) {
-            //TODO: Throw error
+            setDefaultInformation();
         }
 
         const repos = await response.json();
@@ -15,43 +15,60 @@ async function retrieveRepos() {
         displayRepos(repos);
     } catch (exception) {
         console.error(exception);
-        //TODO: Display message on page
+        setDefaultInformation();
     }
 }
 
-function displayRepos(repos) {
-    const repoDiv = document.getElementById('github-repos');
+function setDefaultInformation() {
+    const repoDiv = document.getElementsByClassName('projectsGrid')[0];
     repoDiv.innerHTML = '';
+    //Create the container
+    const containerLink = document.createElement('a');
+    containerLink.className = 'repoContainer';
+    containerLink.href = 'https://github.com/kampert-it';
+    containerLink.target = '_blank';
+    //Title
+    const elementTitle = document.createElement('h1');
+    elementTitle.textContent = 'Whoa';
+    //Information
+    const elementText = document.createElement('p');
+    elementText.textContent = 'I can\'t connect to the GitHub API right now. Click this card to view my projects on GitHub.com';
+    //Add all the elements
+    containerLink.append(elementTitle);
+    containerLink.append(elementText);
+    repoDiv.append(containerLink);
+}
+
+function displayRepos(repos) {
+    const repoDiv = document.getElementsByClassName('projectsGrid')[0];
 
     if (repos.length < 1) {
-        repoDiv.innerHTML = 'No (public) repositories available.';
+        setDefaultInformation();
         return;
     }
 
     repos.forEach(repo => {
-        const div = document.createElement('div');
-
+        repoDiv.innerHTML = '';
+        //Create the container
+        const containerLink = document.createElement('a');
+        containerLink.className = 'repoContainer';
+        containerLink.href = repo.html_url;
+        containerLink.target = '_blank';
         //Title
-        const title = document.createElement('h1');
-        const link = document.createElement('a');
-        link.href = repo.html_url;
-        link.textContent = repo.name;
-        title.append(link);
-        div.append(title);
-
-        //Description
-        if (repo.description) {
-            const description = document.createElement('p');
-            description.textContent = repo.description;
-            div.appendChild(description);
-        }
-
+        const elementTitle = document.createElement('h1');
+        elementTitle.textContent = repo.name;
+        //Information
+        const elementText = document.createElement('p');
+        elementText.textContent = repo.description;
         //Metadata
-        const metadata = document.createElement('p');
-        metadata.textContent = `Created: ${new Date(repo.created_at).toLocaleDateString()} | Updated: ${new Date(repo.updated_at).toLocaleDateString()}`;
-        div.append(metadata);
-
-        repoDiv.append(div);
+        const elementMeta = document.createElement('p');
+        elementMeta.className = 'repoMeta';
+        elementMeta.textContent = `Created: ${new Date(repo.created_at).toLocaleDateString()} | Updated: ${new Date(repo.updated_at).toLocaleDateString()}`;
+        //Add all the elements
+        containerLink.append(elementTitle);
+        containerLink.append(elementText);
+        containerLink.append(elementMeta);
+        repoDiv.append(containerLink);
     });
 }
 

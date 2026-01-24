@@ -3,16 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>kampert.it</title>
+    <meta name="theme-color" content="#1B1B3D" />
+    <title>Bart Kampert | Projects</title>
+    <link rel="stylesheet" href="font.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Repos:</h1>
-    <div id="github-repos">NO REPOS FOUND</div>
+    <main>
+        <div>
+            <section id="pageNav">
+                <a href="index.html" class="indexButton">Home</a>
+                <a href="construction.html" class="indexButton">About me</a>
+            </section>
+            <h1 id="repoHeader">Github Repositories</h1>
+        </div>
+        <div class="projectsGrid" id="repos">
+            <a class="repoContainer" href="https://github.com/kampert-it" target="_blank">
+                <h1></h1>
+                <p></p>
+                <p class="repoMeta"></p>
+            </a>
+        </div>
+    </main>
 
+    <footer>
+        &copy; 2026 Bart Kampert -
+        <a href=".well-known/security.txt" target="_blank">security.txt</a>
+    </footer>
     <script src="js/github_api.js"></script>
 </body>
 

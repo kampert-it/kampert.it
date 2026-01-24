@@ -12,7 +12,8 @@
     --text-color: #FAFAFA;
 }
 
-html, body{
+html,
+body {
     background-color: var(--bg-intro);
 }
 
@@ -127,6 +128,61 @@ footer a:hover {
     text-decoration: underline;
 }
 
+#repoHeader {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.repoContainer {
+    display: block;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 1.2rem;
+    background: var(--bg-intro);
+    border-radius: 1rem;
+}
+
+.repoContainer h1 {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    line-height: 1.45;
+    padding: 0 0 .4rem;
+    color: var(--text-color);
+}
+
+.repoContainer p {
+    margin: 0 0 .6rem;
+    line-height: 1.45;
+    color: var(--text-color);
+}
+
+p.repoMeta {
+    font-size: .75rem;
+    color: var(--intro-quote);
+}
+
+.repoContainer:hover {
+    box-shadow: 0 0 1.6rem var(--button-shadow);
+    filter: brightness(1);
+}
+
+
+.projectsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.projectsGrid .repoContainer {
+    flex: 1 1 100%;
+}
+
+#pageNav {
+    padding: 0 0 1rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
 @keyframes shimmer {
     0% {
         background-position: 0% 50%;
@@ -171,8 +227,8 @@ footer a:hover {
     }
 
     #introText h1 {
-    padding: 0;
-}
+        padding: 0;
+    }
 
     #buttons {
         flex-direction: column;
@@ -186,5 +242,17 @@ footer a:hover {
     #icons img {
         max-width: 20vw;
         max-height: 20vw;
+    }
+
+    #pageNav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (min-width:829px) {
+    .projectsGrid .repoContainer {
+        flex-basis: calc(50% - 4rem);
+        width: 100vw;
     }
 }
