@@ -128,7 +128,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-#repoHeader {
+.pageHeader {
     font-size: 2.5rem;
     text-align: center;
 }
@@ -181,6 +181,49 @@ p.repoMeta {
     padding: 0 0 1rem 0;
     display: flex;
     justify-content: space-between;
+}
+
+.tile {
+    border-radius: 1rem;
+    padding: 1.2rem;
+    flex: 1 1 calc(45% - 0.75rem);
+    min-width: 280px;
+}
+
+.backgroundtile {
+    background: var(--bg-intro);
+}
+
+.tile h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.skill {
+    margin-bottom: 1rem;
+}
+
+.skill-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: .3rem;
+}
+
+.skill-bar {
+    height: 8px;
+    background: var(--text-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-bar .fill {
+    height: 100%;
+    background: var(--button-background);
+    width: 0;
+    background-size: 300% 300%;
+    animation: shimmer 30s linear infinite;
+    transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 @keyframes shimmer {
@@ -247,6 +290,10 @@ p.repoMeta {
     #pageNav {
         flex-direction: column;
         gap: 0.5rem;
+    }
+
+    .tile {
+        flex-basis: 100%;
     }
 }
 
